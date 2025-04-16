@@ -17,7 +17,10 @@ jobs:
         uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.x'
+          dotnet-version: |
+            8.x
+            9.x
+            10.x
       - name: Package NuGet tool
         working-directory: ./src/tool
         run: dotnet pack --include-source --include-symbols --configuration release --output pkg -p:PackageVersion=${{ inputs.versionPrefix }}
