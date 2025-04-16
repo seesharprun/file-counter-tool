@@ -18,8 +18,8 @@
     <Description>
       Command-line tool to count the number of files and directories for a specific path.
     </Description>
-    <ProjectUrl>https://github.com/seesharprun/filecounter/tree/main/readme.md</ProjectUrl>
-    <RepositoryUrl>https://github.com/seesharprun/filecounter</RepositoryUrl>
+    <ProjectUrl>https://github.com/seesharprun/file-counter-tool#readme</ProjectUrl>
+    <RepositoryUrl>https://github.com/seesharprun/file-counter-tool</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
