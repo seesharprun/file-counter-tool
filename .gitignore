@@ -1,0 +1,6 @@
+# NuGet package files
+pkg/
+*.nupkg
+
+# .NET tool configuration
+.config/
