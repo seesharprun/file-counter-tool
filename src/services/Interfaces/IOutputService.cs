@@ -8,8 +8,11 @@ public interface IOutputService
     /// <summary>
     /// Renders the output of the file indexer.
     /// </summary>
+    /// <param name="targetDirectory">
+    /// The target directory that was scanned.
+    /// </param>
     /// <param name="input">
     /// A dictionary containing the relative file paths and their corresponding line counts.
     /// </param>
-    void RenderOutput(Dictionary<string, int> input);
+    void RenderOutput(string targetDirectory, Dictionary<string, int> input);
 }

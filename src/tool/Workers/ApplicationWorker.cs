@@ -2,6 +2,7 @@ namespace SeeSharpRun.FileCounter.Tool.Workers;
 
 internal sealed class ApplicationWorker(
     ILogger<ApplicationWorker> logger,
+    Settings settings,
     IHostApplicationLifetime applicationLifetime,
     IOutputService outputService,
     IFileIndexerService fileIndexerService
@@ -13,7 +14,7 @@ internal sealed class ApplicationWorker(
 
         Dictionary<string, int> fileCounts = await fileIndexerService.IndexFilesAsync(cancellationToken);
 
-        outputService.RenderOutput(fileCounts);
+        outputService.RenderOutput(settings.Root.FullName, fileCounts);
 
         applicationLifetime.StopApplication();
     }

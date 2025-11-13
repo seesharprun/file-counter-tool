@@ -1,5 +1,10 @@
 ﻿HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
 
+// Configure logging to suppress info messages
+// builder.Logging.ClearProviders();
+// builder.Logging.AddConsole();
+builder.Logging.SetMinimumLevel(LogLevel.Warning);
+
 builder.Services.AddTransient<IFileIndexerService, GlobFileIndexerService>();
 builder.Services.AddTransient<IOutputService, SpectreOutputService>();
 

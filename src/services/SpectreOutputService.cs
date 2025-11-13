@@ -9,7 +9,7 @@ public sealed class SpectreOutputService(
 ) : IOutputService
 {
     /// <inheritdoc />
-    public void RenderOutput(Dictionary<string, int> input)
+    public void RenderOutput(string targetDirectory, Dictionary<string, int> input)
     {
         ArgumentNullException.ThrowIfNull(input);
 
@@ -19,7 +19,7 @@ public sealed class SpectreOutputService(
         int linesCount = input.Values.Sum();
 
         // Add a header label
-        AnsiConsole.MarkupLine("[cyan]Scanning directory...[/]");
+        AnsiConsole.MarkupLine($"[cyan]Scanning directory:\t[bold]{targetDirectory}[/][/]");
 
         // Create a colorful table
         Table table = new Table()
