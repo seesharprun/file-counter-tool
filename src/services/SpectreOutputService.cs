@@ -18,24 +18,37 @@ public sealed class SpectreOutputService(
         int filesCount = input.Keys.Distinct().Count();
         int linesCount = input.Values.Sum();
 
+        // Add a header label
+        AnsiConsole.MarkupLine("[cyan]Scanning directory...[/]");
+
+        // Create a colorful table
         Table table = new Table()
-            .AddColumns("File", "Lines");
+            .Border(TableBorder.Rounded)
+            .BorderColor(Color.Blue)
+            .AddColumn(new TableColumn("[cyan]File[/]").LeftAligned())
+            .AddColumn(new TableColumn("[green]Lines[/]").RightAligned());
 
         foreach ((string file, int count) in input)
         {
-            table.AddRow($"{file}", $"{count:0000}");
+            table.AddRow(
+                $"[white]{file}[/]",
+                $"[yellow]{count:N0}[/]"
+            );
         }
-        Console.Write(table);
+        AnsiConsole.Write(table);
 
-        List<string> totals = [
-            $"Total files: {filesCount}",
-            $"Total lines: {linesCount}"
-        ];
+        // Create a colorful totals panel
+        Grid grid = new Grid()
+            .AddColumn()
+            .AddRow($"[cyan]Total files:[/] [bold yellow]{filesCount:N0}[/]")
+            .AddRow($"[cyan]Total lines:[/] [bold yellow]{linesCount:N0}[/]");
 
-        Rows rows = new(totals.Select(t => new Text(t)));
-        Panel panel = new Panel(rows)
-            .Header("Totals");
-        Console.Write(panel);
+        Panel panel = new Panel(grid)
+            .Header("[bold green]Totals[/]")
+            .BorderColor(Color.Green)
+            .Border(BoxBorder.Rounded);
+
+        AnsiConsole.Write(panel);
     }
 }
 
